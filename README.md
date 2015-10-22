@@ -72,7 +72,7 @@ molokai主题
 
 1. clone到本地,配置到linux个人目录（如果是从linux_config过来的，不需要clone）
 
-        git clone https://github.com/sudongayn/my-vim.git
+        git clone https://github.com/sudongyan/my-vim.git
 
 2. 安装依赖包
 
