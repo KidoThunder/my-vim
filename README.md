@@ -1,4 +1,4 @@
-k-vim
+my-vim
 =======================
 
 > VERSION: 9.0
@@ -8,7 +8,7 @@ k-vim
 > 本次更新: 更强大的搜索, 快速运行等
 
 
-详细 [更新日志](https://github.com/wklken/k-vim/blob/master/UPDATE_LOG.md)
+详细 [更新日志](https://github.com/sudongyan/my-vim/blob/master/UPDATE_LOG.md)
 
 # 目标
 
@@ -24,9 +24,9 @@ k-vim
 
     有一定基础的 vimer
 
-**PS**: 服务器端无插件`k-vim`简化版本, 有需要可以安装(curl直接设置vimrc即可)[vim-for-server](https://github.com/wklken/vim-for-server)
+**PS**: 服务器端无插件`my-vim`简化版本, 有需要可以安装(curl直接设置vimrc即可)[vim-for-server](https://github.com/wklken/vim-for-server)
 
-### k-vim使用说明
+### my-vim使用说明
 
 1. 最好能熟练使用原生vim各类操作之后, 再来使用插件扩展
 
@@ -72,7 +72,7 @@ molokai主题
 
 1. clone到本地,配置到linux个人目录（如果是从linux_config过来的，不需要clone）
 
-        git clone https://github.com/wklken/k-vim.git
+        git clone https://github.com/wklken/my-vim.git
 
 2. 安装依赖包
 
@@ -119,9 +119,9 @@ molokai主题
 3. 安装
 
         3.1 进入目录
-        # 注意原先装过的童鞋, 重装时，不要到~/.vim下执行(这是软连接指向k-vim真是目录)，必须到k-vim原生目录执行
+        # 注意原先装过的童鞋, 重装时，不要到~/.vim下执行(这是软连接指向my-vim真是目录)，必须到my-vim原生目录执行
 
-        cd k-vim/
+        cd my-vim/
 
         3.2 执行安装
         # 会进入安装插件的列表，目前30+个插件，一一安装是从github clone的，完全取决于网速, 之后会自动编译 YCM, 编译失败的话需要手动编译, 见第4步
@@ -156,7 +156,7 @@ molokai主题
 
     想要修改终端配色为solarized可以参考 [这里](https://github.com/sigurdga/gnome-terminal-colors-solarized)
 
-    如果是mac原生terminal, 可以参考这里的配置 [issue104](https://github.com/wklken/k-vim/issues/104)
+    如果是mac原生terminal, 可以参考这里的配置 [issue104](https://github.com/wklken/my-vim/issues/104)
 
     - Go语言不能自动补全/tagbar
 
@@ -897,14 +897,14 @@ src="https://raw.github.com/szw/vim-ctrlspace/master/gfx/screen_small.png" />
 
 ### Update Log
 
-详细 [更新日志](https://github.com/wklken/k-vim/blob/master/UPDATE_LOG.md)
+详细 [更新日志](https://github.com/wklken/my-vim/blob/master/UPDATE_LOG.md)
 
 
 version 9.1 [待发布]
 
     1. 增加 leader+w 保存文件
 
-    2. 解决在insert mode粘贴代码缩进错乱问题(以前需要:set paste . 即k-vim中F5快捷键)
+    2. 解决在insert mode粘贴代码缩进错乱问题(以前需要:set paste . 即my-vim中F5快捷键)
 
 version: 9.0
 
@@ -958,7 +958,7 @@ version: 9.0
 
 thx a lot. 可以给我提pull request:)
 
-查看详情 [git-contributors](https://github.com/wklken/k-vim/graphs/contributors)
+查看详情 [git-contributors](https://github.com/wklken/my-vim/graphs/contributors)
 
 
 ### Inspire
