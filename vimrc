@@ -22,10 +22,10 @@
 "==========================================
 " Initial Plugin 加载插件
 "==========================================
-
+set shell=/bin/bash
 " 修改leader键
-let mapleader = ','
-let g:mapleader = ','
+"let mapleader = ','
+"let g:mapleader = ','
 
 " 开启语法高亮
 syntax on
@@ -62,16 +62,16 @@ filetype plugin indent on
 set autoread          " 文件修改之后自动载入。
 set shortmess=atI       " 启动的时候不显示那个援助索马里儿童的提示
 
-" 备份,到另一个位置. 防止误删, 目前是取消备份
-"set backup
-"set backupext=.bak
-"set backupdir=/tmp/vimbk/
-
 " 取消备份。 视情况自己改
-set nobackup
+" set nobackup
 " 关闭交换文件
-set noswapfile
-
+" set noswapfile
+" 备份文件位置
+if !filereadable(expand('~/backup/vim/'))
+    silent execute ":!mkdir -p ~/backup/vim"
+endif
+set backupdir=~/backup/vim
+set backupext=.bak
 
 "create undo file
 if has('persistent_undo')
@@ -81,7 +81,9 @@ if has('persistent_undo')
   set undodir=/tmp/vimundo/
 endif
 
-set wildignore=*.swp,*.bak,*.pyc,*.class,.svn
+set wildignore+=*.swp,*.bak,*.pyc,*.class,.svn
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+set wildignore+=*/*target/*,*/target*/*,*/node_modules/*
 " 突出显示当前行等
 set cursorcolumn
 set cursorline          " 突出显示当前行
@@ -233,6 +235,8 @@ nnoremap <C-n> :call NumberToggle()<cr>
 set encoding=utf-8
 " 自动判断编码时，依次尝试以下编码：
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+scriptencoding utf-8
 set helplang=cn
 "set langmenu=zh_CN.UTF-8
 "set enc=2byte-gb18030
@@ -594,10 +598,10 @@ endif
 " theme主题
 set background=dark
 set t_Co=256
-colorscheme solarized
-" colorscheme molokai
-" colorscheme Tomorrow-Night
-" colorscheme Tomorrow-Night-Bright
+"colorscheme solarized
+"colorscheme molokai
+"colorscheme Tomorrow-Night
+colorscheme Tomorrow-Night-Bright
 " colorscheme desert
 
 

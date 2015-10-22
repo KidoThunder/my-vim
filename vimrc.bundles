@@ -15,7 +15,6 @@ filetype off " required! turn off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-
 " ################### 插件管理 ###################
 
 " 使用Vundle来管理插件
@@ -23,7 +22,7 @@ call vundle#rc()
 "     :BundleInstall     install 安装配置的插件
 "     :BundleInstall!    update  更新
 "     :BundleClean       remove plugin not in list 删除本地无用插件
-Bundle 'gmarik/vundle'
+Bundle 'vundle'
 
 
 " ################### 基础 ######################
@@ -92,7 +91,7 @@ let g:ycm_use_ultisnips_completer = 1 "提示UltiSnips
 let g:ycm_collect_identifiers_from_comments_and_strings = 1   "注释和字符串中的文字也会被收入补全
 let g:ycm_collect_identifiers_from_tags_files = 1
 
-"let g:ycm_seed_identifiers_with_syntax=1   "语言关键字补全, 不过python关键字都很短，所以，需要的自己打开
+let g:ycm_seed_identifiers_with_syntax=1   "语言关键字补全, 不过python关键字都很短，所以，需要的自己打开
 
 " 跳转到定义处, 分屏打开
 let g:ycm_goto_buffer_command = 'horizontal-split'
@@ -272,7 +271,7 @@ let g:ctrlp_follow_symlinks=1
 
 " ctrlp插件1 - 不用ctag进行函数快速跳转
 Bundle 'tacahiroy/ctrlp-funky'
-nnoremap <Leader>fu :CtrlPFunky<Cr>
+noremap <Leader>fu :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 let g:ctrlp_funky_syntax_highlight = 1
@@ -286,7 +285,14 @@ Bundle "dyng/ctrlsf.vim"
 " t       在tab中打开(建议)
 " T - Lkie t but focus CtrlSF window instead of opened new tab.
 " q - Quit CtrlSF window.
-nmap \ <Plug>CtrlSFCwordPath<CR>
+nmap     <C-F>f <Plug>CtrlSFPrompt
+vmap     <C-F>f <Plug>CtrlSFVwordPath
+vmap     <C-F>F <Plug>CtrlSFVwordExec
+nmap     <C-F>n <Plug>CtrlSFCwordPath
+nmap     <C-F>p <Plug>CtrlSFPwordPath
+nnoremap <C-F>o :CtrlSFOpen<CR>
+nnoremap <C-F>t :CtrlSFToggle<CR>
+inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 " let g:ctrlsf_position = 'below'
 " let g:ctrlsf_winsize = '30%'
 let g:ctrlsf_auto_close = 0
@@ -338,12 +344,12 @@ Bundle 'bling/vim-airline'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_left_sep = '▶'
-let g:airline_left_alt_sep = '❯'
-let g:airline_right_sep = '◀'
-let g:airline_right_alt_sep = '❮'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = '>'
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = '<'
+let g:airline_symbols.linenr = '|'
+let g:airline_symbols.branch = '-'
 " 是否打开tabline
 " let g:airline#extensions#tabline#enabled = 1
 
@@ -402,13 +408,19 @@ Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'scrooloose/nerdtree'
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeHighlightCursorline=1
+let g:NERDTreeWinPos="left"
+let g:NERDTreeWinSize=25
+let g:NERDTreeShowLineNumbers=0
+let g:neocomplcache_enable_at_startup = 1
+let g:NERDTreeDirArrows = 0
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
-"close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
 " s/v 分屏打开文件
 let g:NERDTreeMapOpenSplit = 's'
 let g:NERDTreeMapOpenVSplit = 'v'
-
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
 
 Bundle 'jistr/vim-nerdtree-tabs'
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
@@ -421,6 +433,7 @@ let g:nerdtree_tabs_synchronize_focus=0
 
 " Vim Workspace Controller
 Bundle "szw/vim-ctrlspace"
+nmap <silent><Leader>be :CtrlSpace<CR>
 let g:airline_exclude_preview = 1
 hi CtrlSpaceSelected guifg=#586e75 guibg=#eee8d5 guisp=#839496 gui=reverse,bold ctermfg=10 ctermbg=7 cterm=reverse,bold
 hi CtrlSpaceNormal   guifg=#839496 guibg=#021B25 guisp=#839496 gui=NONE ctermfg=12 ctermbg=0 cterm=NONE
@@ -443,7 +456,6 @@ hi CtrlSpaceStatus   guifg=#839496 guibg=#002b36 gui=reverse term=reverse cterm=
 " noremap <leader>bn :MBEbn<CR>
 " noremap <leader>bp :MBEbp<CR>
 " noremap <leader>bd :MBEbd<CR>
-
 
 " 标签导航
 Bundle 'majutsushi/tagbar'
@@ -556,31 +568,58 @@ let g:html_indent_style1 = "inc"
 
 " for javascript 自动补全,配合YCM,需要安装nodejs&npm  see
 " https://github.com/marijnh/tern_for_vim
-" Bundle 'marijnh/tern_for_vim'
+Bundle 'marijnh/tern_for_vim'
 
 " for jquery
 Bundle 'nono/jquery.vim'
 
-" ###### emmet HTML complete #########
-" Bundle "mattn/emmet-vim"
+" json高亮
+Bundle 'elzr/vim-json'
 
-" ###### vim.less : less 自动更新##########
-" Bundle 'groenewege/vim-less'
-" autocmd BufWritePost *.less :!lessc % > %:p:r.css
+" ###### emmet HTML complete #########
+Bundle "mattn/emmet-vim"
+
+" ###### vim.oess : less 自动更新##########
+Bundle 'groenewege/vim-less'
+" autocmd BufWritePost *.less :!lessc % > %:p:r.css " 编译成css
 
 " ###### Jinja2 #########
 Bundle 'Glench/Vim-Jinja2-Syntax'
 
 " for css color
 " not work in iterm2 which termianl selection is not xterm-256
-" Bundle 'ap/vim-css-color'
+Bundle 'ap/vim-css-color'
+Bundle 'hail2u/vim-css3-syntax'
+augroup VimCSS3Syntax
+    autocmd!
+    autocmd FileType css,less setlocal iskeyword+=-
+augroup END
 
 " 这个有坑, see issue https://github.com/wklken/k-vim/issues/49
 " Bundle 'gorodinskiy/vim-coloresque'
 
 " ###### nginx #########
-" Bundle 'evanmiller/nginx-vim-syntax'
+Bundle 'evanmiller/nginx-vim-syntax'
 
+" ##### js html css 格式美化  #############
+" https://github.com/maksimr/vim-jsbeautify
+Bundle 'maksimr/vim-jsbeautify'
+" map <c-l> :call JsBeautify()<cr>
+" or
+autocmd FileType javascript noremap <buffer>  <c-l> :call JsBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-l> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-l> :call CSSBeautify()<cr>
+autocmd FileType javascript vnoremap <buffer>  <c-l> :call RangeJsBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <c-l> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <c-l> :call RangeCSSBeautify()<cr>
+
+" ########## spf13/PIV PHP Integration for VIM ################
+" https://github.com/spf13/PIV
+Bundle 'spf13/PIV'
+
+Bundle 'danro/rename.vim'
 
 " ####### temp #######
 " python code format
