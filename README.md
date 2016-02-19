@@ -988,13 +988,7 @@ thx a lot. 可以给我提pull request:)
 
 The End!
 
-wklken (凌岳/pythoner/vim党预备党员)
-
-Email: wklken@yeah.net
-
+from:
+wklken
 Github: https://github.com/wklken
-
-Blog: [http://www.wklken.me](http://www.wklken.me)
-
-2013-06-11 于深圳
 
