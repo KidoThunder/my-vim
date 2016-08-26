@@ -2,5 +2,6 @@ bundle/*
 *.pyc
 *.bak
 *.bk
+*.swp
 configs
 myconfig.sh

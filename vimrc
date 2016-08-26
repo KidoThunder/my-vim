@@ -61,7 +61,7 @@ set shortmess=atI       " 启动的时候不显示那个援助索马里儿童的
 " 取消备份。 视情况自己改
 " set nobackup
 " 关闭交换文件
-" set noswapfile
+set noswapfile
 " 备份文件位置
 if !filereadable(expand('~/backup/vim/'))
     silent execute ":!mkdir -p ~/backup/vim"
@@ -169,7 +169,7 @@ set foldenable
 " syntax    使用语法定义折叠
 " diff      对没有更改的文本进行折叠
 " marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
-set foldmethod=indent
+set foldmethod=syntax
 set foldlevel=99
 " 代码折叠自定义快捷键
 let g:FoldMethod = 0
@@ -330,6 +330,20 @@ set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
 
 " disbale paste mode when leaving insert mode
 au InsertLeave * set nopaste
+
+" disbale paste mode when leaving insert mode
+au InsertLeave * set nopaste
+
+" F5 set paste问题已解决, 粘贴代码前不需要按F5了
+" F5 粘贴模式paste_mode开关,用于有格式的代码粘贴
+" Automatically set paste mode in Vim when pasting in insert mode
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
 
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
@@ -525,10 +539,13 @@ inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 " FileType Settings  文件类型设置
 "==========================================
 
-" Python 文件的一般设置，比如不要 tab 等
-autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
+" 具体编辑文件类型的一般设置，比如不要 tab 等
+autocmd FileType python,php,javascript,html,css,less,xml set tabstop=4 shiftwidth=4 expandtab ai
 autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
 autocmd BufRead,BufNew *.md,*.mkd,*.markdown  set filetype=markdown.mkd
+autocmd BufRead,BufNewFile *.part set filetype=html
+" disable showmatch when use > in php
+au BufWinEnter *.php set mps-=<:>
 
 
 " 保存python文件时删除多余空格

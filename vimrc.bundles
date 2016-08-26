@@ -341,6 +341,7 @@ noremap <leader>h :GundoToggle<CR>
 " 状态栏增强展示
 " 新的airline配置
 Bundle 'https://github.com/bling/vim-airline.git'
+Bundle 'https://github.com/vim-airline/vim-airline-themes.git'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
@@ -559,19 +560,22 @@ let g:vim_markdown_folding_disabled=1
 " ###### HTML/JS/JQUERY/CSS #########
 
 " for javascript  注意: syntax这个插件要放前面
-Bundle 'https://github.com/jelera/vim-javascript-syntax.git'
+"Bundle 'https://github.com/jelera/vim-javascript-syntax.git'
+Bundle 'https://github.com/othree/yajs.vim.git'
 Bundle "pangloss/vim-javascript"
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
 
+
 " for javascript 自动补全,配合YCM,需要安装nodejs&npm  see
 " https://github.com/marijnh/tern_for_vim
 Bundle 'https://github.com/marijnh/tern_for_vim.git'
 
-" for jquery
-Bundle 'https://github.com/nono/jquery.vim.git'
+" Syntax file for JavaScript libraries 
+Bundle 'https://github.com/othree/javascript-libraries-syntax.vim.git'
+let g:used_javascript_libs = 'underscore,backbone,jquery,requirejs,react'
 
 " json高亮
 Bundle 'https://github.com/leshill/vim-json.git'
