@@ -193,7 +193,7 @@ let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String']
 
 " ################### 快速移动 ###################
 
-"更高效的移动 [,, + w/fx]
+"更高效的移动 [\\ + w/fx]
 Bundle 'https://github.com/easymotion/vim-easymotion.git'
 let g:EasyMotion_smartcase = 1
 "let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
@@ -249,7 +249,7 @@ let g:multi_cursor_quit_key='<Esc>'
 Bundle 'https://github.com/ctrlpvim/ctrlp.vim.git'
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
-map <leader>f :CtrlPMRU<CR>
+map <Leader>fp :CtrlPMRU<Cr>
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
     \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
@@ -261,17 +261,17 @@ let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 " 如果安装了ag, 使用ag
-" if executable('ag')
-  " " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  " " ag is fast enough that CtrlP doesn't need to cache
-  " let g:ctrlp_use_caching = 0
-" endif
+if executable('ag')
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 
 " ctrlp插件1 - 不用ctag进行函数快速跳转
 Bundle 'https://github.com/tacahiroy/ctrlp-funky.git'
-noremap <Leader>fu :CtrlPFunky<Cr>
+nnoremap <Leader>fu :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 let g:ctrlp_funky_syntax_highlight = 1
@@ -589,9 +589,9 @@ Bundle 'https://github.com/groenewege/vim-less.git'
 " ###### Jinja2 #########
 Bundle 'https://github.com/Glench/Vim-Jinja2-Syntax.git'
 
-" for css color
+" for css color !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 " not work in iterm2 which termianl selection is not xterm-256
-Bundle 'https://github.com/skammer/vim-css-color.git'
+" Bundle 'https://github.com/skammer/vim-css-color.git'
 Bundle 'https://github.com/hail2u/vim-css3-syntax.git'
 augroup VimCSS3Syntax
     autocmd!
@@ -602,7 +602,7 @@ augroup END
 " Bundle 'gorodinskiy/vim-coloresque'
 
 " ###### nginx #########
-Bundle 'https://github.com/evanmiller/nginx-vim-syntax.git'
+Bundle 'https://github.com/fbernier/nginx-vim-syntax.git'
 
 " ##### js html css 格式美化  #############
 " https://github.com/maksimr/vim-jsbeautify
@@ -623,6 +623,19 @@ autocmd FileType css vnoremap <buffer> <c-l> :call RangeCSSBeautify()<cr>
 Bundle 'https://github.com/spf13/PIV.git'
 
 Bundle 'https://github.com/danro/rename.vim.git'
+
+" ######### WM Graphviz #####################
+" https://github.com/wannesm/wmgraphviz.vim
+Bundle 'https://github.com/wannesm/wmgraphviz.vim.git'
+
+" ############### Open browers ##############
+Bundle 'https://github.com/tyru/open-browser.vim.git'
+" ############### Markdown preview ################ 
+Bundle 'https://github.com/kannokanno/previm.git'
+augroup PrevimSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup EN
 
 " ####### temp #######
 " python code format

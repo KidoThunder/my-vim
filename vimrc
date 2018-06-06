@@ -327,6 +327,8 @@ nnoremap <F4> :set wrap! wrap?<CR>
 set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
                                 "    paste mode, where you can paste mass data
                                 "    that won't be autoindented
+" open markdown preview in browser
+nnoremap <F7> :PrevimOpen<CR> 
 
 " disbale paste mode when leaving insert mode
 au InsertLeave * set nopaste
