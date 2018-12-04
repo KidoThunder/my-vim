@@ -562,8 +562,8 @@ let g:vim_markdown_folding_disabled=1
 " for javascript  注意: syntax这个插件要放前面
 "Bundle 'https://github.com/jelera/vim-javascript-syntax.git'
 Bundle 'https://github.com/othree/yajs.vim.git'
-Bundle "pangloss/vim-javascript"
-let g:html_indent_inctags = "html,body,head,tbody"
+Bundle "https://github.com/vim-scripts/vim-javascript.git"
+let g:html_indent_inctags = "html,body,table,head,tbody,div"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
