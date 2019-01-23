@@ -117,6 +117,27 @@ let g:ycm_filetype_blacklist = {
       \ 'gitcommit' : 1,
       \}
 
+" phpcomplate
+Bundle "https://github.com/shawncplus/phpcomplete.vim.git"
+" comment doc
+Bundle "https://github.com/vim-scripts/DoxygenToolkit.vim.git"
+let g:DoxygenToolkit_commentType = "php"
+let g:DoxygenToolkit_authorName="coolbaby"
+let s:licenseTag = "Copyright(C)\<enter>"
+let s:licenseTag = s:licenseTag . "For free\<enter>"
+let s:licenseTag = s:licenseTag . "All right reserved\<enter>"
+let g:DoxygenToolkit_licenseTag = s:licenseTag
+let g:DoxygenToolkit_briefTag_funcName="yes"
+let g:doxygen_enhanced_color=1
+
+let g:DoxygenToolkit_briefTag_pre="@desc function  "
+let g:DoxygenToolkit_paramTag_pre="@params [type] "
+let g:DoxygenToolkit_returnTag="@return "
+"let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
+"let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------"
+let g:DoxygenToolkit_authorName="Dongyan Su"
+"let g:DoxygenToolkit_licenseTag="My own license"
+
 
 " 代码片段快速插入 (snippets中,是代码片段资源,需要学习)
 Bundle 'https://github.com/SirVer/ultisnips.git'
@@ -408,6 +429,7 @@ Bundle 'https://github.com/chriskempson/vim-tomorrow-theme.git'
 "目录导航
 Bundle 'https://github.com/scrooloose/nerdtree.git'
 map <leader>n :NERDTreeToggle<CR>
+let g:NERDTreeNodeDelimiter = "\u00a0"
 let NERDTreeHighlightCursorline=1
 let g:NERDTreeWinPos="left"
 let g:NERDTreeWinSize=25
